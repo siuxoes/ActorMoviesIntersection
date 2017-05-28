@@ -5,6 +5,7 @@ times = 1
 import requests, json
 headers = {'User-agent':'Mozilla/5.0'}
 
+#Main loop, clean this @Siuxoes
 while addMore:
     actor = input("Introduce el nombre de un actor que desea buscar: ")
     URL = "http://suggestqueries.google.com/complete/search?client=firefox&q="
