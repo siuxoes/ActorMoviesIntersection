@@ -69,6 +69,7 @@ def get_movies_list(listaEntrada):
         movies = d["credits"]["cast"]
         movies_dict = {}
         for x in movies:
+            print(x)
             movies_dict[x["id"]] = x["original_title"]
         listaSalida.append(movies_dict)
     return listaSalida
@@ -97,7 +98,17 @@ print()
 seq = 1
 print("PELICULAS: ")
 for x in listaPeliculasComunes:
-    print("{0:20} \t {1:50}".format(seq, listaPeliculas[0][x]))
+    URL = 'http://netflixroulette.net/api/api.php?title=' + str(urllib.request.quote(listaPeliculas[0][x]))
+
+    r = requests.get(URL)
+    d = r.json()
+    netflix = ""
+    if r.ok:
+        netflix = "ESTÁ EN NETFLIX"
+    else:
+        netflix = "NO ESTÁ EN NETFLIX"
+    print("{0:20} \t {1:50} {2:100}".format(seq, listaPeliculas[0][x], netflix))
+
     seq+=1
 
 print("--- %s seconds ---" % (time.time() - start_time))
