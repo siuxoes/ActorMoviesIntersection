@@ -36,7 +36,8 @@ while addMore:
 
 import urllib.request
 import requests
-
+import time
+start_time = time.time()
 def get_peoples_id(listaEntrada):
     listaSalida = []
     for persona in listaEntrada:
@@ -77,8 +78,8 @@ def get_movies_list(listaEntrada):
 listaIdActores = get_peoples_id(nombreActores)
 listaPeliculas = get_movies_list(listaIdActores)
 
-for x in listaPeliculas:
-    print(x)
+# for x in listaPeliculas:
+#     print(x)
 def intersection_List(listaEntrada):
     return set(listaEntrada[0]).intersection(*listaEntrada)
 
@@ -99,6 +100,7 @@ for x in listaPeliculasComunes:
     print("{0:20} \t {1:50}".format(seq, listaPeliculas[0][x]))
     seq+=1
 
+print("--- %s seconds ---" % (time.time() - start_time))
 # actores = [2231, 3223]
 # url = 'https://api.themoviedb.org/3/person/2231?api_key=6571f3c9bf9f6be28a99b58842d35298&append_to_response=credits'
 #
